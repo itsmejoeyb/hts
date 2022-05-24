@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { projects } from '../../dummy-data/data'
+import { NextPage } from "next"
 import {
     CheckIcon,
     PaperClipIcon,
@@ -102,15 +103,46 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const WorkOrder = () => {
+interface Props {
+    projects: [
+        {
+            id: number;
+            title: string;
+            initials: string;
+            type: string;
+            tasks: {
+                id: number;
+                title: string;
+                description: string;
+                created: string;
+                completed: boolean;
+            }
+        }
+    ]
+};
+
+
+const WorkOrder: NextPage<Props> = (props) => {
     const router = useRouter()
-    const [loading, setLoading] = useState(true)
     //@ts-ignore
-    const project = projects.filter(project => project.id === +router.query.slug)
-    const [workOrder, setWorkOrder] = useState(project[0])
-    const [tasks, setTasks] = useState(project[0].tasks)
+    const id = +router.query.slug
+    const [loading, setLoading] = useState(true)
+    const project = props.projects.filter(project => project.id === id)
+    
+    const [workOrder, setWorkOrder] = useState({})
+    const [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        //@ts-ignore
+        setWorkOrder(project[0])
+        //@ts-ignore
+        setTasks(project[0].tasks)
+        setLoading(false)
+    }, [])
 
     return (
+        <>
+        {!loading && 
         <div className='pt-8'>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
             <div className="flex items-center space-x-5">
@@ -331,7 +363,15 @@ const WorkOrder = () => {
             </section>
           </div>
         </div>
+        }
+        </>
     );
+}
+
+export async function getServerSideProps() {
+    return {
+        props: { projects }, // will be passed to the page component as props
+    }
 }
 
 export default WorkOrder;
