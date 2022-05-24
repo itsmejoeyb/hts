@@ -110,13 +110,20 @@ interface Props {
             title: string;
             initials: string;
             type: string;
-            tasks: {
+            tasks: [{
                 id: number;
                 title: string;
                 description: string;
                 created: string;
                 completed: boolean;
-            }
+            }],
+            lastUpdated: string,
+            datetime: string,
+            pinned: false,
+            bgColorClass: string,
+            status: string,
+            shipping: string
+
         }
     ]
 };
@@ -126,23 +133,19 @@ const WorkOrder: NextPage<Props> = (props) => {
     const router = useRouter()
     //@ts-ignore
     const id = +router.query.slug
-    const [loading, setLoading] = useState(true)
     const project = props.projects.filter(project => project.id === id)
     
-    const [workOrder, setWorkOrder] = useState({})
-    const [tasks, setTasks] = useState([])
+    const [workOrder, setWorkOrder] = useState(project[0])
+    const [tasks, setTasks] = useState(project[0].tasks)
 
-    useEffect(() => {
-        //@ts-ignore
-        setWorkOrder(project[0])
-        //@ts-ignore
-        setTasks(project[0].tasks)
-        setLoading(false)
-    }, [])
+    // useEffect(() => {
+    //     //@ts-ignore
+    //     setWorkOrder(project[0])
+    //     //@ts-ignore
+    //     setTasks(project[0].tasks)
+    // }, [])
 
     return (
-        <>
-        {!loading && 
         <div className='pt-8'>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
             <div className="flex items-center space-x-5">
@@ -325,8 +328,8 @@ const WorkOrder: NextPage<Props> = (props) => {
                     <fieldset>
                         <legend className="text-lg font-medium text-gray-900"></legend>
                         <div className=" border-t border-b border-gray-200 divide-y divide-gray-200">
-                            {tasks.map((task, personIdx) => (
-                                <div key={personIdx} className="relative flex items-start py-4">
+                            {tasks.map((task) => (
+                                <div key={task.id} className="relative flex items-start py-4">
                                     <div id='title' className={classNames(task.completed ? "line-through" : "","min-w-0 flex-1 text-sm ")}>
                                         <label htmlFor={`task-${task.id}`} className="font-medium text-gray-700 select-none">
                                             {task.title}
@@ -363,8 +366,6 @@ const WorkOrder: NextPage<Props> = (props) => {
             </section>
           </div>
         </div>
-        }
-        </>
     );
 }
 
