@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { projects } from '../../dummy-data/data'
 import {
@@ -7,7 +7,6 @@ import {
     ThumbUpIcon,
     UserIcon,
 } from '@heroicons/react/solid'
-import { title } from 'process'
 
 const attachments = [
     { name: 'install_info.pdf', href: '#' },
@@ -103,7 +102,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const workOrder = () => {
+const WorkOrder = () => {
     const router = useRouter()
     const [loading, setLoading] = useState(true)
     //@ts-ignore
@@ -335,4 +334,4 @@ const workOrder = () => {
     );
 }
 
-export default workOrder;
+export default WorkOrder;
