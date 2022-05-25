@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { projects } from '../../dummy-data/data'
+import { projects, user } from '../../dummy-data/data'
 import type { NextPage } from "next"
 import {
     PaperClipIcon,
@@ -40,13 +40,6 @@ const statusStyles = {
     delayed: 'bg-yellow-100 text-yellow-800',
 }
 
-const user = {
-    name: 'Jane Smith',
-    email: 'whitney@example.com',
-    imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
-}
-
 //@ts-ignore
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -57,6 +50,7 @@ interface Props {
         {
             id: number,
             title: string,
+            details: string,
             initials: string,
             type: string,
             tasks: [{
@@ -71,10 +65,24 @@ interface Props {
             pinned: false,
             bgColorClass: string,
             status: string,
-            shipping: string
-
+            shipping: string,
+            contact: {
+              firstName: string,
+              lastName: string,
+              fullName: string,
+              email: string,
+              address: string,
+              phone: string,
+            },
         }
-    ]
+    ],
+    user: {
+      firstName: string,
+      lastName: string,
+      fullName: string,
+      email: string,
+      imageUrl: string
+    }
 };
 
 
@@ -123,19 +131,19 @@ const WorkOrder: NextPage<Props> = (props) => {
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Name</dt>
-                        <dd className="mt-1 text-sm text-gray-900">John Smith</dd>
+                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.fullName}</dd>
                       </div>
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                        <dd className="mt-1 text-sm text-gray-900">johnsmith@example.com</dd>
+                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.email}</dd>
                       </div>
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Address</dt>
-                        <dd className="mt-1 text-sm text-gray-900">123 First St.</dd>
+                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.address}</dd>
                       </div>
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Phone</dt>
-                        <dd className="mt-1 text-sm text-gray-900">555-555-5555</dd>
+                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.phone}</dd>
                       </div>
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
@@ -146,9 +154,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                       <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Details</dt>
                         <dd className="mt-1 text-sm text-gray-900">
-                          Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat.
-                          Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia
-                          proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+                          {workOrder.details}
                         </dd>
                       </div>
                       <div className="sm:col-span-2">
@@ -305,7 +311,7 @@ const WorkOrder: NextPage<Props> = (props) => {
 
 export async function getServerSideProps() {
     return {
-        props: { projects },
+        props: { projects, user },
     }
 }
 
