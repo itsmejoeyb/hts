@@ -828,5 +828,6 @@ export const user = {
     lastName: 'Smith',
     fullName: 'Jane Smith',
     email: 'janesmith@example.com',
+    title: 'Technician',
     imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
 }
