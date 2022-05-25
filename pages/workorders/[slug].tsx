@@ -90,10 +90,10 @@ const WorkOrder: NextPage<Props> = (props) => {
     const router = useRouter()
     //@ts-ignore
     const id = +router.query.slug
-    const project = props.projects.filter(project => project.id === id)
+    const project = props.projects.filter(project => project.id === id)[0]
     
-    const [workOrder, setWorkOrder] = useState(project[0])
-    const [tasks, setTasks] = useState(project[0].tasks)
+    const [workOrder, setWorkOrder] = useState(project)
+    const [tasks, setTasks] = useState(project.tasks)
 
     return (
         <div className='pt-8'>

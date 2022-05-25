@@ -1,10 +1,11 @@
 import type { NextPage } from 'next'
-import {Fragment, useState} from 'react'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { DotsVerticalIcon, CheckCircleIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import { IdentificationIcon, ClipboardIcon, ClipboardCheckIcon } from '@heroicons/react/outline'
-import { projects, user } from '../dummy-data/data'
+import { user } from '../dummy-data/data'
 import Link from 'next/link'
+import useGetWorkOrders from '@hooks/useGetWorkOrders'
 
 type Project = {
   id: number,
@@ -34,15 +35,7 @@ const classNames = (...classes) => {
 }
 
 const Home: NextPage = () => {
-  const [workOrders, setWorkOrders] = useState(projects)
-
-  const handleUpdateWorkOrders = (id: number) => {
-    setWorkOrders((prevWorkOrders) =>
-      prevWorkOrders.map((workOrder) => {
-        return workOrder.id === id ? { ...workOrder, pinned: !workOrder.pinned } : workOrder;
-      }),
-    );
-  };
+  const { workOrders, handleUpdatePinned } = useGetWorkOrders()
 
   return (
     <div >
@@ -197,7 +190,7 @@ const Home: NextPage = () => {
                                 active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                 'block px-4 py-2 text-sm'
                               )}
-                              onClick={() => handleUpdateWorkOrders(workOrder.id)}
+                              onClick={() => handleUpdatePinned(workOrder.id)}
                             >
                               Removed from pinned
                             </button>
@@ -372,7 +365,7 @@ const Home: NextPage = () => {
                                           active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                                           'block px-4 py-2 text-sm cursor-pointer'
                                         )}
-                                        onClick={() => handleUpdateWorkOrders(workOrder.id)}
+                                        onClick={() => handleUpdatePinned(workOrder.id)}
                                       >
                                         {workOrder.pinned ? 'Remove from pinned' : 'Add to pinned'}
                                       </span>
