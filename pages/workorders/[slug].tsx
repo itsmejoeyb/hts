@@ -116,9 +116,9 @@ const WorkOrder: NextPage<Props> = (props) => {
             </div>
           </div>
 
-          <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+          <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl xl:grid-flow-col-dense xl:grid-cols-3">
             <div className="space-y-6 lg:col-start-1 lg:col-span-2">
-              {/* Description list*/}
+              {/* Description*/}
               <section aria-labelledby="applicant-information-title">
                 <div className="bg-white shadow sm:rounded-lg">
                   <div className="px-4 py-5 sm:px-6">
@@ -184,126 +184,133 @@ const WorkOrder: NextPage<Props> = (props) => {
                   </div>
                 </div>
               </section>
+              {/* End Description */}
 
-              {/* Comments*/}
-              <section aria-labelledby="notes-title">
-                <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden">
-                  <div className="divide-y divide-gray-200">
-                    <div className="px-4 py-5 sm:px-6">
-                      <h2 id="notes-title" className="text-lg font-medium text-gray-900">
-                        Notes
-                      </h2>
-                    </div>
-                    <div className="px-4 py-6 sm:px-6">
-                      <ul role="list" className="space-y-8">
-                        {comments.map((comment) => (
-                          <li key={comment.id}>
-                            <div className="flex space-x-3">
-                              <div className="flex-shrink-0">
-                                <img
-                                  className="h-10 w-10 rounded-full"
-                                  src={`https://images.unsplash.com/photo-${comment.imageId}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
-                                  alt=""
-                                />
-                              </div>
-                              <div>
-                                <div className="text-sm">
-                                  <a href="#" className="font-medium text-gray-900">
-                                    {comment.name}
-                                  </a>
-                                </div>
-                                <div className="mt-1 text-sm text-gray-700">
-                                  <p>{comment.body}</p>
-                                </div>
-                                <div className="mt-2 text-sm space-x-2">
-                                  <span className="text-gray-500 font-medium">{comment.date}</span>{' '}
-                                  <span className="text-gray-500 font-medium">&middot;</span>{' '}
-                                  <button type="button" className="text-gray-900 font-medium">
-                                    Reply
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="bg-gray-50 px-4 py-6 sm:px-6">
-                    <div className="flex space-x-3">
-                      <div className="flex-shrink-0">
-                        <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <form action="#">
-                          <div>
-                            <label htmlFor="comment" className="sr-only">
-                              About
-                            </label>
-                            <textarea
-                              id="comment"
-                              name="comment"
-                              rows={3}
-                              className="shadow-sm block w-full focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md"
-                              placeholder="Add a note"
-                              defaultValue={''}
-                            />
-                          </div>
-                          <div className="mt-3 flex items-center">
-                            <button
-                              type="submit"
-                              className="ml-auto inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
-                            >
-                              Comment
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-
-            <section aria-labelledby="timeline-title" className="lg:col-start-3 lg:col-span-1">
+              {/* Tasks */}
+            <section aria-labelledby="tasks-title">
               <div className="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
                 <h2 id="timeline-title" className="text-lg font-medium text-gray-900">
                   Tasks
                 </h2>
-
-                {/* Activity Feed */}
                 <div className="mt-6 flow-root">
-                    <fieldset>
-                        <legend className="text-lg font-medium text-gray-900"></legend>
-                        <div className=" border-t border-b border-gray-200 divide-y divide-gray-200">
-                            {tasks.map((task) => (
-                                <div key={task.id} className="relative flex items-start py-4">
-                                    <div id='title' className={classNames(task.completed ? "line-through" : "","min-w-0 flex-1 text-sm ")}>
-                                        <label htmlFor={`task-${task.id}`} className="font-medium text-gray-700 select-none">
-                                            {task.title}
-                                        </label>
-                                        <p className='text-gray-500'>{task.description}</p>
-                                    </div>
-                                    <div className="ml-3 flex items-center h-5">
-                                        <input
-                                            id={`task-${task.id}`}
-                                            name={`task-${task.id}`}
-                                            type="checkbox"
-                                            defaultChecked={task.completed}
-                                            className="focus:ring-cyan-500 h-4 w-4 text-cyan-600 border-gray-300 rounded"
-                                            onChange={(e) => {
-                                                task.completed = e.target.checked
-                                                setTasks([...tasks]);
-                                            }}
-                                        />
-                                    </div>
-                                </div>
-                            ))}
+                  <fieldset>
+                    <legend className="text-lg font-medium text-gray-900"></legend>
+                    <div className=" border-t border-b border-gray-200 divide-y divide-gray-200">
+                      {tasks.map((task) => (
+                        <div key={task.id} className="relative flex items-start py-4">
+                          <div id='title' className={classNames(task.completed ? "line-through" : "", "min-w-0 flex-1 text-sm ")}>
+                            <label htmlFor={`task-${task.id}`} className="font-medium text-gray-700 select-none">
+                              {task.title}
+                            </label>
+                            <p className='text-gray-500'>{task.description}</p>
+                          </div>
+                          <div className="ml-3 flex items-center h-5">
+                            <input
+                              id={`task-${task.id}`}
+                              name={`task-${task.id}`}
+                              type="checkbox"
+                              defaultChecked={task.completed}
+                              className="focus:ring-cyan-500 h-4 w-4 text-cyan-600 border-gray-300 rounded"
+                              onChange={(e) => {
+                                task.completed = e.target.checked
+                                setTasks([...tasks]);
+                              }}
+                            />
+                          </div>
                         </div>
-                    </fieldset>
+                      ))}
+                    </div>
+                  </fieldset>
                 </div>
               </div>
             </section>
+
+            {/* End Tasks */}
+              
+          </div>
+
+            
+
+          {/* Comments*/}
+          <section aria-labelledby="notes-title" className="xl:col-start-3 xl:col-span-1">
+            <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden">
+              <div className="divide-y divide-gray-200">
+                <div className="px-4 py-5 sm:px-6">
+                  <h2 id="notes-title" className="text-lg font-medium text-gray-900">
+                    Notes
+                  </h2>
+                </div>
+                <div className="px-4 py-6 sm:px-6">
+                  <ul role="list" className="space-y-8">
+                    {comments.map((comment) => (
+                      <li key={comment.id}>
+                        <div className="flex space-x-3">
+                          <div className="flex-shrink-0">
+                            <img
+                              className="h-8 w-8 rounded-full"
+                              src={`https://images.unsplash.com/photo-${comment.imageId}?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
+                              alt=""
+                            />
+                          </div>
+                          <div>
+                            <div className="text-sm">
+                              <a href="#" className="font-medium text-gray-900">
+                                {comment.name}
+                              </a>
+                            </div>
+                            <div className="mt-1 text-sm text-gray-700">
+                              <p>{comment.body}</p>
+                            </div>
+                            <div className="mt-2 text-sm space-x-2">
+                              <span className="text-gray-500 font-medium">{comment.date}</span>{' '}
+                              <span className="text-gray-500 font-medium">&middot;</span>{' '}
+                              <button type="button" className="text-gray-900 font-medium">
+                                Reply
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="bg-gray-50 px-4 py-6 sm:px-6">
+                <div className="flex space-x-3">
+                  <div className="flex-shrink-0">
+                    <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <form action="#">
+                      <div>
+                        <label htmlFor="comment" className="sr-only">
+                          About
+                        </label>
+                        <textarea
+                          id="comment"
+                          name="comment"
+                          rows={3}
+                          className="shadow-sm block w-full focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm border border-gray-300 rounded-md"
+                          placeholder="Add a note"
+                          defaultValue={''}
+                        />
+                      </div>
+                      <div className="mt-3 flex items-center">
+                        <button
+                          type="submit"
+                          className="ml-auto inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                        >
+                          Comment
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* End Comments */}
+
           </div>
         </div>
     );

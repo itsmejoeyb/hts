@@ -7,6 +7,12 @@ import { user } from '../dummy-data/data'
 import Link from 'next/link'
 import useGetWorkOrders from '@hooks/useGetWorkOrders'
 
+enum BGColorClass {
+  OnTime = 'ontime',
+  Due = 'due',
+  OverDue = 'overdue'
+}
+
 type Project = {
   id: number,
   title: string,
