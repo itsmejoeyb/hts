@@ -199,10 +199,10 @@ const WorkOrder: NextPage<Props> = (props) => {
                       {tasks.map((task) => (
                         <div key={task.id} className="relative flex items-start py-4">
                           <div id='title' className={classNames(task.completed ? "line-through" : "", "min-w-0 flex-1 text-sm ")}>
-                            <label htmlFor={`task-${task.id}`} className="font-medium text-gray-700 select-none">
+                            <label htmlFor={`task-${task.id}`} className={classNames(task.completed ? "text-gray-300" : "text-gray-700","font-medium select-none")}>
                               {task.title}
                             </label>
-                            <p className='text-gray-500'>{task.description}</p>
+                            <p className={classNames(task.completed ? "text-gray-300" : "text-gray-500",'')}>{task.description}</p>
                           </div>
                           <div className="ml-3 flex items-center h-5">
                             <input
