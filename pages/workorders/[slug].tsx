@@ -66,7 +66,7 @@ const WorkOrder: NextPage = () => {
                   <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
                     <form>
                       <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                        {formJson.json.map( field => <FormElement field={field}/> )}
+                        {formJson.json.map( field => <FormElement key={field.name} field={field}/> )}
 
                       </div>
                     </form>
