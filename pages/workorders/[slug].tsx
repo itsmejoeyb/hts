@@ -33,7 +33,7 @@ const WorkOrder: NextPage = () => {
     //@ts-ignore
     // const { workOrder } = useGetWorkOrder(id)
     const [workOrder, setWorkOrder] = useState(project)
-    const [tasks, setTasks] = useState(workOrder.tasks)
+    const [tasks, setTasks] = useState(project.tasks)
 
     return (
         <div className='pt-8'>
