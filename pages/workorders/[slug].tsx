@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { user } from '../../dummy-data/data'
+import { user, projects } from '../../dummy-data/data'
 import type { NextPage } from "next"
 import {
     PaperClipIcon,
@@ -26,9 +26,13 @@ function classNames(...classes) {
 
 const WorkOrder: NextPage = () => {
     const router = useRouter()
-    const id = router.query.slug
     //@ts-ignore
-    const { workOrder } = useGetWorkOrder(id)
+    const id = +router.query.slug
+    const project = projects.filter(project => project.id === id)[0]
+
+    //@ts-ignore
+    // const { workOrder } = useGetWorkOrder(id)
+    const [workOrder, setWorkOrder] = useState(project)
     const [tasks, setTasks] = useState(workOrder.tasks)
 
     return (
