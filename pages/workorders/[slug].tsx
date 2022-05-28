@@ -24,14 +24,64 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const WorkOrder: NextPage = () => {
+interface Props {
+  projects: [
+    {
+      id: number,
+      title: string,
+      details: string,
+      initials: string,
+      type: string,
+      tasks: [{
+        id: number,
+        title: string,
+        description: string,
+        created: string,
+        completed: boolean,
+      }],
+      lastUpdated: string,
+      datetime: string,
+      pinned: false,
+      bgColorClass: string,
+      status: string,
+      shipping: string,
+      contact: {
+        firstName: string,
+        lastName: string,
+        fullName: string,
+        email: string,
+        address: string,
+        phone: string,
+      },
+      notes: [
+        {
+          id: number,
+          name: string,
+          date: string,
+          imageId: string,
+          body: string,
+        }
+      ]
+    }
+  ],
+  user: {
+    firstName: string,
+    lastName: string,
+    fullName: string,
+    email: string,
+    imageUrl: string
+  }
+};
+
+const WorkOrder: NextPage<Props> = (props) => {
     const router = useRouter()
     //@ts-ignore
     const id = +router.query.slug
-    const project = projects.filter(project => project.id === id)[0]
+    const project = props.projects.filter(project => project.id === id)[0]
 
     //@ts-ignore
     // const { workOrder } = useGetWorkOrder(id)
+
     const [workOrder, setWorkOrder] = useState(project)
     const [tasks, setTasks] = useState(project.tasks)
 
@@ -260,6 +310,12 @@ const WorkOrder: NextPage = () => {
           </div>
         </div>
     );
+}
+
+export async function getServerSideProps() {
+  return {
+    props: { projects, user },
+  }
 }
 
 export default WorkOrder;
