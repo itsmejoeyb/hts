@@ -1107,3 +1107,47 @@ export const user = {
     title: 'Technician',
     imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
 }
+
+export const formJson = {
+    json: [
+        {
+            label: 'Name',
+            id: 'name',
+            placeholder: 'Full Name',
+            value: 'John Smith',
+            name: 'name',
+            type: 'text'
+        },
+        {
+            label: 'Email address',
+            id: 'email',
+            placeholder: 'email@example.com',
+            value: 'johnsmith@example.com',
+            name: 'email',
+            type: 'text'
+        },
+        {
+            label: 'Address',
+            id: 'address',
+            placeholder: 'Address',
+            value: '123 First St.',
+            name: 'address',
+            type: 'text'
+        },
+        {
+            label: 'Phone',
+            id: 'phone',
+            placeholder: 'Phone',
+            value: '555-555-5555',
+            name: 'phone',
+            type: 'text'
+        },
+        {
+            label: 'Details',
+            id: 'details',
+            placeholder: 'Details...',
+            value: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
+            name: 'details',
+        }
+    ]
+}

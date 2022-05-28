@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { projects, user } from '../../dummy-data/data'
+import { user } from '../../dummy-data/data'
 import type { NextPage } from "next"
 import {
     PaperClipIcon,
 } from '@heroicons/react/solid'
 import useGetWorkOrder from '@hooks/useGetWorkOrder'
+import { formJson } from '../../dummy-data/data'
+import FormElement from '@components/FormElement'
 
 const attachments = [
     { name: 'install_info.pdf', href: '#' },
@@ -21,56 +23,6 @@ const statusStyles = {
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-
-// interface Props {
-//     projects: [
-//         {
-//             id: number,
-//             title: string,
-//             details: string,
-//             initials: string,
-//             type: string,
-//             tasks: [{
-//                 id: number,
-//                 title: string,
-//                 description: string,
-//                 created: string,
-//                 completed: boolean,
-//             }],
-//             lastUpdated: string,
-//             datetime: string,
-//             pinned: false,
-//             bgColorClass: string,
-//             status: string,
-//             shipping: string,
-//             contact: {
-//               firstName: string,
-//               lastName: string,
-//               fullName: string,
-//               email: string,
-//               address: string,
-//               phone: string,
-//             },
-//             notes: [
-//               {
-//                 id: number,
-//                 name: string,
-//                 date: string,
-//                 imageId: string,
-//                 body: string,
-//               }
-//             ]
-//         }
-//     ],
-//     user: {
-//       firstName: string,
-//       lastName: string,
-//       fullName: string,
-//       email: string,
-//       imageUrl: string
-//     }
-// };
-
 
 const WorkOrder: NextPage = () => {
     const router = useRouter()
@@ -112,8 +64,14 @@ const WorkOrder: NextPage = () => {
                     <p className="mt-1 max-w-2xl text-sm text-gray-500">Contact details and order information.</p>
                   </div>
                   <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+                    <form>
+                      <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                        {formJson.json.map( field => <FormElement field={field}/> )}
+
+                      </div>
+                    </form>
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                      <div className="sm:col-span-1">
+                      {/* <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Name</dt>
                         <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.fullName}</dd>
                       </div>
@@ -128,19 +86,19 @@ const WorkOrder: NextPage = () => {
                       <div className="sm:col-span-1">
                         <dt className="text-sm font-medium text-gray-500">Phone</dt>
                         <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.phone}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
+                      </div> */}
+                      <div className="sm:col-span-1 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
                             <dd className={classNames(
                             //@ts-ignore
                             statusStyles[workOrder.shipping], "mt-1 text-sm w-[fit-content] rounded-full px-2 py-1")}>{workOrder.shipping}</dd>
                       </div>
-                      <div className="sm:col-span-2">
+                      {/* <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Details</dt>
                         <dd className="mt-1 text-sm text-gray-900">
                           {workOrder.details}
                         </dd>
-                      </div>
+                      </div> */}
                       <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Attachments</dt>
                         <dd className="mt-1 text-sm text-gray-900">
