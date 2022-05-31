@@ -125,34 +125,12 @@ const WorkOrder: NextPage<Props> = (props) => {
                       </div>
                     </form>
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                      {/* <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Name</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.fullName}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.email}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Address</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.address}</dd>
-                      </div>
-                      <div className="sm:col-span-1">
-                        <dt className="text-sm font-medium text-gray-500">Phone</dt>
-                        <dd className="mt-1 text-sm text-gray-900">{workOrder.contact.phone}</dd>
-                      </div> */}
                       <div className="sm:col-span-1 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
                             <dd className={classNames(
                             //@ts-ignore
                             statusStyles[workOrder.shipping], "mt-1 text-sm w-[fit-content] rounded-full px-2 py-1")}>{workOrder.shipping}</dd>
                       </div>
-                      {/* <div className="sm:col-span-2">
-                        <dt className="text-sm font-medium text-gray-500">Details</dt>
-                        <dd className="mt-1 text-sm text-gray-900">
-                          {workOrder.details}
-                        </dd>
-                      </div> */}
                       <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Attachments</dt>
                         <dd className="mt-1 text-sm text-gray-900">

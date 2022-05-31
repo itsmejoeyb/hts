@@ -19,10 +19,11 @@ const Input = ({label, id, placeholder, value, type, name}: Props) => {
                 <input
                     type={type}
                     name={name}
-                    value={value || undefined}
+                    defaultValue={value || undefined}
                     id={id}
                     className="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     placeholder={placeholder || undefined}
+                    readOnly={true}
                 />
             </div>
         </div>

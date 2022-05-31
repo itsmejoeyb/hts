@@ -18,9 +18,9 @@ const TextArea = ({label, id, value, name, rows}: Props) => {
                     rows={rows || 5}
                     name={name}
                     id={id}
-                    className="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md disabled:select-none"
+                    className="shadow-sm focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md"
                     defaultValue={value || ''}
-                    disabled={true}
+                    readOnly={true}
                 />
             </div>
         </div>
