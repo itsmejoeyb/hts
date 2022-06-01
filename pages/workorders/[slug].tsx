@@ -5,6 +5,7 @@ import type { NextPage } from "next"
 import {
     PaperClipIcon,
 } from '@heroicons/react/solid'
+import { TrashIcon } from '@heroicons/react/outline'
 import useGetWorkOrder from '@hooks/useGetWorkOrder'
 import { formJson } from '../../dummy-data/data'
 import FormElement from '@components/FormElement'
@@ -84,6 +85,18 @@ const WorkOrder: NextPage<Props> = (props) => {
 
     const [workOrder, setWorkOrder] = useState(project)
     const [tasks, setTasks] = useState(project.tasks)
+
+  const addClick = () => {
+    //@ts-ignore
+    setTasks([...tasks, {id: tasks.length + 1, title: '', description: '', created: '', completed: false}])
+  }
+
+  const removeClick = (id: number) => {
+    let vals = [...tasks];
+    vals.splice(vals.findIndex(item => item.id === id), 1)
+    //@ts-ignore
+    setTasks(vals);
+  }
 
     return (
         <div className='pt-8'>
@@ -173,10 +186,15 @@ const WorkOrder: NextPage<Props> = (props) => {
                       {tasks.map((task) => (
                         <div key={task.id} className="relative flex items-start py-4">
                           <div id='title' className={classNames(task.completed ? "line-through" : "", "min-w-0 flex-1 text-sm ")}>
-                            <label htmlFor={`task-${task.id}`} className={classNames(task.completed ? "text-gray-300" : "text-gray-700","font-medium select-none")}>
+                            {/* <label htmlFor={`task-${task.id}`} className={classNames(task.completed ? "text-gray-300" : "text-gray-700","font-medium select-none")}>
                               {task.title}
-                            </label>
-                            <p className={classNames(task.completed ? "text-gray-300" : "text-gray-500",'')}>{task.description}</p>
+                            </label> */}
+                            <input 
+                              type="text" 
+                              name={`task-${task.id}`} 
+                              defaultValue={task.description} 
+                              className={classNames(task.completed ? "text-gray-300" : "",'shadow-sm focus:ring-cyan-500 focus:border-cyan-500 block w-full sm:text-sm border-gray-300 rounded-md')} 
+                            />
                           </div>
                           <div className="ml-3 flex items-center h-5">
                             <input
@@ -191,9 +209,23 @@ const WorkOrder: NextPage<Props> = (props) => {
                               }}
                             />
                           </div>
+                          <div className="ml-3 flex items-center h-5">
+                            <button
+                              onClick={() => removeClick(task.id)}
+                            >
+                              <TrashIcon className='h-6 w-6 text-red-600'/>
+                              </button>
+                          </div>
                         </div>
                       ))}
                     </div>
+                    <button
+                      type="submit"
+                      className="ml-auto mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                      onClick={addClick}
+                    >
+                      Add task
+                    </button>
                   </fieldset>
                 </div>
               </div>
