@@ -168,7 +168,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                 </h2>
                 <div className="mt-6 flow-root">
                   <fieldset>
-                    <legend className="text-lg font-medium text-gray-900"></legend>
+                    {/* <legend className="text-lg font-medium text-gray-900"></legend> */}
                     <div className=" border-t border-b border-gray-200 divide-y divide-gray-200">
                       {tasks.map((task) => (
                         <div key={task.id} className="relative flex items-start py-4">
@@ -205,7 +205,7 @@ const WorkOrder: NextPage<Props> = (props) => {
 
             
 
-          {/* Comments*/}
+          {/* Comments */}
           <section aria-labelledby="notes-title" className="xl:col-start-3 xl:col-span-1">
             <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden">
               <div className="divide-y divide-gray-200">
