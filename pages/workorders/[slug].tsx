@@ -86,16 +86,16 @@ const WorkOrder: NextPage<Props> = (props) => {
     const [workOrder, setWorkOrder] = useState(project)
     const [tasks, setTasks] = useState(project.tasks)
 
-  const addClick = () => {
+  const addTask = () => {
     //@ts-ignore
     setTasks([...tasks, {id: tasks.length + 1, title: '', description: '', created: '', completed: false}])
   }
 
-  const removeClick = (id: number) => {
-    let vals = [...tasks];
-    vals.splice(vals.findIndex(item => item.id === id), 1)
+  const removeTask = (id: number) => {
+    let items = [...tasks];
+    items.splice(items.findIndex(item => item.id === id), 1)
     //@ts-ignore
-    setTasks(vals);
+    setTasks(items);
   }
 
     return (
@@ -211,7 +211,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                           </div>
                           <div className="ml-3 flex items-center h-5">
                             <button
-                              onClick={() => removeClick(task.id)}
+                              onClick={() => removeTask(task.id)}
                             >
                               <TrashIcon className='h-6 w-6 text-red-600'/>
                               </button>
@@ -222,7 +222,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                     <button
                       type="submit"
                       className="ml-auto mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
-                      onClick={addClick}
+                      onClick={addTask}
                     >
                       Add task
                     </button>
