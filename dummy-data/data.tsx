@@ -47,7 +47,7 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -163,7 +163,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'due',
-        shipping: 'delayed',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -237,7 +237,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'overdue',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -332,7 +332,7 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'delayed',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -413,7 +413,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'delayed',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -529,7 +529,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'due',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -603,7 +603,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'overdue',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -698,7 +698,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -779,7 +779,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -895,7 +895,7 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'due',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -969,7 +969,7 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'overdue',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -1064,7 +1064,7 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'ontime',
+        shipping: 'EXH436H283Y5HW93Y5H',
         contact: {
             firstName: 'John',
             lastName: 'Smith',

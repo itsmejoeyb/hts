@@ -140,9 +140,9 @@ const WorkOrder: NextPage<Props> = (props) => {
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                       <div className="sm:col-span-1 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
-                            <dd className={classNames(
-                            //@ts-ignore
-                            statusStyles[workOrder.shipping], "mt-1 text-sm w-[fit-content] rounded-full px-2 py-1")}>{workOrder.shipping}</dd>
+                          <dd className="mt-1 text-sm w-[fit-content] rounded-full px-2 py-1 text-cyan-600 hover:text-cyan-500">
+                            <a href="#">{workOrder.shipping || 'No shipping info available.'}</a>
+                          </dd>
                       </div>
                       <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Attachments</dt>
