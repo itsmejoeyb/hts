@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { user, projects } from '../../dummy-data/data'
 import type { NextPage } from "next"
@@ -85,6 +85,20 @@ const WorkOrder: NextPage<Props> = (props) => {
 
     const [workOrder, setWorkOrder] = useState(project)
     const [tasks, setTasks] = useState(project.tasks)
+    const [images, setImages] = useState<any[]>([])
+    const [imageUrls, setImageUrls] = useState<string[]>([])
+
+    useEffect(() => {
+      if (images.length < 1) return;
+      const newImageUrls: string[] = []
+      images.forEach(image => newImageUrls.push(URL.createObjectURL(image)))
+      setImageUrls(newImageUrls)
+    },[images])
+
+  const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //@ts-ignore
+    setImages([...e.target.files])
+  }
 
   const addTask = () => {
     //@ts-ignore
@@ -122,10 +136,10 @@ const WorkOrder: NextPage<Props> = (props) => {
           <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl xl:grid-flow-col-dense xl:grid-cols-3">
             <div className="space-y-6 lg:col-start-1 lg:col-span-2">
               {/* Description*/}
-              <section aria-labelledby="applicant-information-title">
+              <section aria-labelledby="workorder-information">
                 <div className="bg-white shadow sm:rounded-lg">
                   <div className="px-4 py-5 sm:px-6">
-                    <h2 id="applicant-information-title" className="text-lg leading-6 font-medium text-gray-900">
+                    <h2 id="workorder-information" className="text-lg leading-6 font-medium text-gray-900">
                       Contact Information
                     </h2>
                     <p className="mt-1 max-w-2xl text-sm text-gray-500">Contact details and order information.</p>
@@ -234,12 +248,57 @@ const WorkOrder: NextPage<Props> = (props) => {
             {/* End Tasks */}
               
           </div>
-
-            
-
-          {/* Comments */}
-          <section aria-labelledby="notes-title" className="xl:col-start-3 xl:col-span-1">
+          {/* Sidebar */}
+          <section aria-labelledby="photos-title" className="xl:col-start-3 xl:col-span-1">
             <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden">
+              <div className="divide-y divide-gray-200">
+                <div className="px-4 py-5 sm:px-6">
+                  <h2 id="notes-title" className="text-lg font-medium text-gray-900">
+                    Photos
+                  </h2>
+                </div>
+                <div className="px-4 py-6 sm:px-6">
+                  <ul role="list" className="space-y-8">
+                    {imageUrls.length > 0 ? imageUrls.map((imageSrc) => (
+                      <li>
+                        <img src={imageSrc} className="w-full h" />
+                      </li>
+                    )) : 
+                    <label htmlFor="images">
+                      <span
+                        className="relative cursor-pointer block w-full border-2 border-gray-400 border-dashed rounded-lg p-12 text-center hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                      >
+                        <svg
+                          className="mx-auto h-14 w-14 text-gray-400"
+                          xmlns="http://www.w3.org/2000/svg"
+                          stroke="currentColor"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span className="mt-2 block text-sm font-medium text-gray-600">Add photos</span>
+                        <input type="file" multiple accept='image/*' id="images" className="hidden" onChange={onImageChange} />
+                      </span>
+                    </label> }
+                  </ul>
+                </div>
+              </div>
+              {/* <div className="bg-gray-50 px-4 py-6 sm:px-6">
+                <div className="flex space-x-3">
+                  <div className="min-w-0 flex-1">
+                    <label className="text-sm font-medium leading-5 text-gray-900">
+                      <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                        Upload
+                      </span>
+                      <input name="images" type="file" multiple accept="image/*" onChange={onImageChange} className="hidden" />
+                    </label>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+            <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden mt-4">
               <div className="divide-y divide-gray-200">
                 <div className="px-4 py-5 sm:px-6">
                   <h2 id="notes-title" className="text-lg font-medium text-gray-900">
@@ -315,10 +374,9 @@ const WorkOrder: NextPage<Props> = (props) => {
               </div>
             </div>
           </section>
-          {/* End Comments */}
-
-          </div>
+          {/* End Sidebar */}
         </div>
+      </div>
     );
 }
 

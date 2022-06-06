@@ -1,5 +1,3 @@
-
-
 type Props = {
     label: string,
     id: string,
