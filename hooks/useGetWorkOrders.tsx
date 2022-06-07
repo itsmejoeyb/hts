@@ -1,19 +1,17 @@
-import { projects } from "../dummy-data/data"
-import { useState } from 'react'
+import useSWR from "swr"
+
+//@ts-ignore
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const useGetWorkOrders = () => {
-    const [workOrders, setWorkOrders] = useState(projects)
+    const { data, error, mutate } = useSWR(`/api/workorders`, fetcher)
 
-    const handleUpdatePinned = (id: number) => {
-        setWorkOrders((prevWorkOrders) =>
-            prevWorkOrders.map((workOrder) => {
-                return workOrder.id === id ? { ...workOrder, pinned: !workOrder.pinned } : workOrder;
-            }),
-        )
+    return {
+        data: data,
+        isLoading: !error && !data,
+        isError: error,
+        setData: mutate
     }
-
-
-    return {workOrders, handleUpdatePinned}
 }
 
 export default useGetWorkOrders

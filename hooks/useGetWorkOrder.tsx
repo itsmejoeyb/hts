@@ -1,13 +1,18 @@
 import { projects } from "dummy-data/data";
-import { useState } from "react";
-import { Workorder } from "types/workorder";
+import useSWR from "swr"
 
-const useGetWorkOrder = (id: string) => {
-    
-    const project = projects.filter(project => project.id === +id)[0]
-    const [workOrder, setWorkOrder] = useState(project)
+//@ts-ignore
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-    return { workOrder }
+const useGetWorkOrder = (id: number) => {
+    const { data, error, mutate } = useSWR(`/api/workorders/${id}`, fetcher)
+
+    return {
+        workOrder: data,
+        isLoading: !error && !data,
+        isError: error,
+        setWorkOrder: mutate
+    }
 }
 
-export default useGetWorkOrder;
+export default useGetWorkOrder

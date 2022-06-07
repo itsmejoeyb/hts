@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { DotsVerticalIcon, CheckCircleIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import { IdentificationIcon, ClipboardIcon, ClipboardCheckIcon } from '@heroicons/react/outline'
 import { user } from '../dummy-data/data'
 import Link from 'next/link'
 import useGetWorkOrders from '@hooks/useGetWorkOrders'
+import { Workorder } from 'types/workorder'
 
 enum BGColorClass {
   OnTime = 'ontime',
@@ -41,7 +42,25 @@ const classNames = (...classes) => {
 }
 
 const Home: NextPage = () => {
-  const { workOrders, handleUpdatePinned } = useGetWorkOrders()
+  const { data, isLoading, isError, setData} = useGetWorkOrders()
+  const [workOrders, setWorkOrders] = useState<Workorder[]>([])
+
+  useEffect(() => {
+    if (data) {
+      setWorkOrders(data)
+    }
+  }, [data])
+
+  const handleUpdatePinned = (id: number) => {
+    setWorkOrders((prevWorkOrders: any[]) =>
+      prevWorkOrders.map((workOrder) => {
+        return workOrder.id === id ? { ...workOrder, pinned: !workOrder.pinned } : workOrder;
+      }),
+    )
+  }
+
+  if(isLoading) return <div>Loading...</div>
+  if(isError) return <div>Error!</div>
 
   return (
     <div >
@@ -138,7 +157,7 @@ const Home: NextPage = () => {
       <div className="px-4 mt-6 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <h2 className="text-gray-500 text-xs font-medium uppercase tracking-wide">Pinned Work Orders</h2>
         <ul role="list" className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-4 mt-3">
-          {workOrders.filter((workOrder) => workOrder.pinned).map((workOrder) => (
+          {workOrders.filter((workOrder: Workorder) => workOrder.pinned).map((workOrder: Workorder) => (
             <li key={workOrder.id} className="relative col-span-1 flex shadow-sm rounded-md">
               <div
                 className={classNames(
@@ -219,7 +238,7 @@ const Home: NextPage = () => {
       {/* Activity list (smallest breakpoint only) */}
       <div className="shadow sm:hidden">
         <ul role="list" className="mt-2 divide-y divide-gray-200 overflow-hidden shadow sm:hidden">
-          {workOrders.map((workOrder) => (
+          {workOrders.map((workOrder: Workorder) => (
             <li key={workOrder.id}>
               <Link href={`/workorders/${workOrder.id}`} >
                 <a className="block px-4 py-4 bg-white hover:bg-gray-50">
@@ -296,7 +315,7 @@ const Home: NextPage = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {workOrders.map((workOrder) => (
+                  {workOrders.map((workOrder: Workorder) => (
                     <tr key={workOrder.id} className="bg-white">
                       <td className="max-w-0 w-full px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         <div className="flex">

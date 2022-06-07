@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/solid'
 import { TrashIcon } from '@heroicons/react/outline'
 import useGetWorkOrder from '@hooks/useGetWorkOrder'
+import { Workorder } from '../../types/workorder'
 import { formJson } from '../../dummy-data/data'
 import FormElement from '@components/FormElement'
 
@@ -15,10 +16,8 @@ const attachments = [
     { name: 'other_install_info.pdf', href: '#' },
 ]
 
-const statusStyles = {
-    ontime: 'bg-green-100 text-green-800',
-    delayed: 'bg-yellow-100 text-yellow-800',
-}
+//@ts-ignore
+const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 //@ts-ignore
 function classNames(...classes) {
@@ -78,15 +77,21 @@ const WorkOrder: NextPage<Props> = (props) => {
     const router = useRouter()
     //@ts-ignore
     const id = +router.query.slug
-    const project = props.projects.filter(project => project.id === id)[0]
+    // const project = props.projects.filter(project => project.id === id)[0]
 
-    //@ts-ignore
-    // const { workOrder } = useGetWorkOrder(id)
+    
+    const { workOrder, isError, isLoading, setWorkOrder } = useGetWorkOrder(id)
 
-    const [workOrder, setWorkOrder] = useState(project)
-    const [tasks, setTasks] = useState(project.tasks)
+    // const [workOrder, setWorkOrder] = useState<Workorder>(project)
+    const [tasks, setTasks] = useState<any[]>([])
     const [images, setImages] = useState<any[]>([])
     const [imageUrls, setImageUrls] = useState<string[]>([])
+
+    useEffect(() => {
+      if (workOrder) {
+        setTasks(workOrder.tasks)
+      }
+    }, [workOrder])
 
     useEffect(() => {
       if (images.length < 1) return;
@@ -97,7 +102,7 @@ const WorkOrder: NextPage<Props> = (props) => {
 
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //@ts-ignore
-    setImages([...e.target.files])
+    setImages([...images, ...e.target.files])
   }
 
   const addTask = () => {
@@ -111,6 +116,9 @@ const WorkOrder: NextPage<Props> = (props) => {
     //@ts-ignore
     setTasks(items);
   }
+
+  if(isError) return <p>Error</p>
+  if(isLoading) return <p>Loading...</p>
 
     return (
         <div className='pt-8'>
@@ -197,7 +205,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                   <fieldset>
                     {/* <legend className="text-lg font-medium text-gray-900"></legend> */}
                     <div className=" border-t border-b border-gray-200 divide-y divide-gray-200">
-                      {tasks.map((task) => (
+                      {tasks.map((task: any) => (
                         <div key={task.id} className="relative flex items-start py-4">
                           <div id='title' className={classNames(task.completed ? "line-through" : "", "min-w-0 flex-1 text-sm ")}>
                             {/* <label htmlFor={`task-${task.id}`} className={classNames(task.completed ? "text-gray-300" : "text-gray-700","font-medium select-none")}>
@@ -279,24 +287,24 @@ const WorkOrder: NextPage<Props> = (props) => {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                         <span className="mt-2 block text-sm font-medium text-gray-600">Add photos</span>
-                        <input type="file" multiple accept='image/*' id="images" className="hidden" onChange={onImageChange} />
+                        <input type="file" multiple accept='image/*' name="images" className="hidden" onChange={onImageChange} />
                       </span>
                     </label> }
                   </ul>
                 </div>
               </div>
-              {/* <div className="bg-gray-50 px-4 py-6 sm:px-6">
+              {imageUrls.length > 0 && <div className="bg-gray-50 px-4 py-6 sm:px-6">
                 <div className="flex space-x-3">
                   <div className="min-w-0 flex-1">
                     <label className="text-sm font-medium leading-5 text-gray-900">
                       <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
-                        Upload
+                        Add photos
                       </span>
                       <input name="images" type="file" multiple accept="image/*" onChange={onImageChange} className="hidden" />
                     </label>
                   </div>
                 </div>
-              </div> */}
+              </div>}
             </div>
             <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden mt-4">
               <div className="divide-y divide-gray-200">
@@ -307,7 +315,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                 </div>
                 <div className="px-4 py-6 sm:px-6">
                   <ul role="list" className="space-y-8">
-                    {workOrder.notes.map((note) => (
+                    {workOrder.notes.map((note: any) => (
                       <li key={note.id}>
                         <div className="flex space-x-3">
                           <div className="flex-shrink-0">
@@ -382,7 +390,10 @@ const WorkOrder: NextPage<Props> = (props) => {
 
 export async function getServerSideProps() {
   return {
-    props: { projects, user },
+    props: { 
+      // projects, 
+      user 
+    },
   }
 }
 
