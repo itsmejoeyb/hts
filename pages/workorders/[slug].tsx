@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { user, projects } from '../../dummy-data/data'
+import { user } from '../../dummy-data/data'
 import type { NextPage } from "next"
 import {
     PaperClipIcon,
 } from '@heroicons/react/solid'
 import { TrashIcon } from '@heroicons/react/outline'
 import useGetWorkOrder from '@hooks/useGetWorkOrder'
-import { Workorder } from '../../types/workorder'
 import { formJson } from '../../dummy-data/data'
 import FormElement from '@components/FormElement'
 
@@ -25,45 +24,6 @@ function classNames(...classes) {
 }
 
 interface Props {
-  projects: [
-    {
-      id: number,
-      title: string,
-      details: string,
-      initials: string,
-      type: string,
-      tasks: [{
-        id: number,
-        title: string,
-        description: string,
-        created: string,
-        completed: boolean,
-      }],
-      lastUpdated: string,
-      datetime: string,
-      pinned: false,
-      bgColorClass: string,
-      status: string,
-      shipping: string,
-      contact: {
-        firstName: string,
-        lastName: string,
-        fullName: string,
-        email: string,
-        address: string,
-        phone: string,
-      },
-      notes: [
-        {
-          id: number,
-          name: string,
-          date: string,
-          imageId: string,
-          body: string,
-        }
-      ]
-    }
-  ],
   user: {
     firstName: string,
     lastName: string,
@@ -125,9 +85,9 @@ const WorkOrder: NextPage<Props> = (props) => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
             <div className="flex items-center space-x-5">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">{workOrder.title}</h1>
+                <h1 className="text-2xl font-bold text-gray-900">{workOrder?.title}</h1>
                 <p className="text-sm font-medium text-gray-500">
-                  Created on <time dateTime={workOrder.datetime}>{workOrder.lastUpdated}</time>
+                  Created on <time dateTime={workOrder?.datetime}>{workOrder?.lastUpdated}</time>
                 </p>
               </div>
             </div>
@@ -163,7 +123,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                       <div className="sm:col-span-1 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
                           <dd className="mt-1 text-sm w-[fit-content] rounded-full px-2 py-1 text-cyan-600 hover:text-cyan-500">
-                            <a href="#">{workOrder.shipping || 'No shipping info available.'}</a>
+                            <a href="#">{workOrder?.shipping || 'No shipping info available.'}</a>
                           </dd>
                       </div>
                       <div className="sm:col-span-2">
@@ -315,7 +275,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                 </div>
                 <div className="px-4 py-6 sm:px-6">
                   <ul role="list" className="space-y-8">
-                    {workOrder.notes.map((note: any) => (
+                    {workOrder?.notes.map((note: any) => (
                       <li key={note.id}>
                         <div className="flex space-x-3">
                           <div className="flex-shrink-0">

@@ -1,11 +1,11 @@
-import { projects } from "dummy-data/data";
 import useSWR from "swr"
+import { Workorder } from "types/workorder"
 
 //@ts-ignore
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 const useGetWorkOrder = (id: number) => {
-    const { data, error, mutate } = useSWR(`/api/workorders/${id}`, fetcher)
+    const { data, error, mutate } = useSWR<Workorder>(`/api/workorders/${id}`, fetcher)
 
     return {
         workOrder: data,
