@@ -5,6 +5,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WO',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],   
         tasks: [
             {
                 id: 1,
@@ -86,6 +98,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WT',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -202,6 +226,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WT',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -276,6 +312,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WF',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -371,6 +419,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WO',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -452,6 +512,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WT',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -568,6 +640,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WT',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -642,6 +726,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WF',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -737,6 +833,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WO',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -818,6 +926,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WT',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -934,6 +1054,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WT',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,
@@ -1008,6 +1140,18 @@ export const projects = [
         details: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
         initials: 'WF',
         type: 'Engineering',
+        attachments: [
+            {
+                id: 1,
+                name: 'install_info.pdf', 
+                url: '#'
+            },
+            {
+                id: 2,
+                name: 'other_install_info.pdf', 
+                url: '#'
+            },
+        ],
         tasks: [
             {
                 id: 1,

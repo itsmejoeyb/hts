@@ -10,11 +10,6 @@ import useGetWorkOrder from '@hooks/useGetWorkOrder'
 import { formJson } from '../../dummy-data/data'
 import FormElement from '@components/FormElement'
 
-const attachments = [
-    { name: 'install_info.pdf', href: '#' },
-    { name: 'other_install_info.pdf', href: '#' },
-]
-
 //@ts-ignore
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
@@ -45,11 +40,13 @@ const WorkOrder: NextPage<Props> = (props) => {
     // const [workOrder, setWorkOrder] = useState<Workorder>(project)
     const [tasks, setTasks] = useState<any[]>([])
     const [images, setImages] = useState<any[]>([])
+    const [attachments, setAttachments] = useState<any[]>([])
     const [imageUrls, setImageUrls] = useState<string[]>([])
 
     useEffect(() => {
       if (workOrder) {
         setTasks(workOrder.tasks)
+        setAttachments(workOrder.attachments)
       }
     }, [workOrder])
 
@@ -63,6 +60,11 @@ const WorkOrder: NextPage<Props> = (props) => {
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //@ts-ignore
     setImages([...images, ...e.target.files])
+  }
+  const onAttachmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //@ts-ignore
+    setAttachments([...attachments, ...e.target.files])
+    console.log(e.target.files)
   }
 
   const addTask = () => {
@@ -140,13 +142,21 @@ const WorkOrder: NextPage<Props> = (props) => {
                                   <span className="ml-2 flex-1 w-0 truncate">{attachment.name}</span>
                                 </div>
                                 <div className="ml-4 flex-shrink-0">
-                                  <a href={attachment.href} className="font-medium text-cyan-600 hover:text-cyan-500">
+                                  <a href={attachment.url} className="font-medium text-cyan-600 hover:text-cyan-500">
                                     View
                                   </a>
                                 </div>
                               </li>
                             ))}
                           </ul>
+                          <div className='mt-4'>
+                            <label className="text-sm font-medium leading-5 text-gray-900">
+                              <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                                Add attachment
+                              </span>
+                              <input name="attachments" type="file" multiple accept=".pdf,.doc" onChange={onAttachmentChange} className="hidden" />
+                            </label>
+                          </div>
                         </dd>
                       </div>
                     </dl>

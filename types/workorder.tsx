@@ -4,6 +4,13 @@ export interface Workorder {
     details: string;
     initials: string;
     type: string;
+    attachments: [
+        {
+            id: number;
+            name: string;
+            url: string;
+        }
+    ];
     tasks: [
         {
             id: number;
