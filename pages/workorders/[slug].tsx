@@ -32,21 +32,20 @@ const WorkOrder: NextPage<Props> = (props) => {
     const router = useRouter()
     //@ts-ignore
     const id = +router.query.slug
-    // const project = props.projects.filter(project => project.id === id)[0]
 
     
     const { workOrder, isError, isLoading, setWorkOrder } = useGetWorkOrder(id)
 
-    // const [workOrder, setWorkOrder] = useState<Workorder>(project)
     const [tasks, setTasks] = useState<any[]>([])
     const [images, setImages] = useState<any[]>([])
     const [attachments, setAttachments] = useState<any[]>([])
     const [imageUrls, setImageUrls] = useState<string[]>([])
+    const [attachmentUrls, setAttachmentUrls] = useState<string[]>([])
 
     useEffect(() => {
       if (workOrder) {
         setTasks(workOrder.tasks)
-        setAttachments(workOrder.attachments)
+        // setAttachments(workOrder.attachments)
       }
     }, [workOrder])
 
@@ -57,6 +56,11 @@ const WorkOrder: NextPage<Props> = (props) => {
       setImageUrls(newImageUrls)
     },[images])
 
+    useEffect(() => {
+      if (attachments.length < 1) return;
+      setAttachmentUrls(attachments.map(attachment => attachment.url = URL.createObjectURL(attachment)))
+    },[attachments])
+
   const onImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //@ts-ignore
     setImages([...images, ...e.target.files])
@@ -64,7 +68,6 @@ const WorkOrder: NextPage<Props> = (props) => {
   const onAttachmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //@ts-ignore
     setAttachments([...attachments, ...e.target.files])
-    console.log(e.target.files)
   }
 
   const addTask = () => {
@@ -142,7 +145,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                                   <span className="ml-2 flex-1 w-0 truncate">{attachment.name}</span>
                                 </div>
                                 <div className="ml-4 flex-shrink-0">
-                                  <a href={attachment.url} className="font-medium text-cyan-600 hover:text-cyan-500">
+                                  <a href={attachment.url} target="_blank" className="font-medium text-cyan-600 hover:text-cyan-500">
                                     View
                                   </a>
                                 </div>
