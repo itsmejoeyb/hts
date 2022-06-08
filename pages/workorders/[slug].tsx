@@ -145,7 +145,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                                   <span className="ml-2 flex-1 w-0 truncate">{attachment.name}</span>
                                 </div>
                                 <div className="ml-4 flex-shrink-0">
-                                  <a href={attachment.url} target="_blank" className="font-medium text-cyan-600 hover:text-cyan-500">
+                                  <a href={attachment.url} target="_blank" rel="noreferrer" className="font-medium text-cyan-600 hover:text-cyan-500">
                                     View
                                   </a>
                                 </div>
