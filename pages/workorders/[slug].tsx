@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { user } from '../../dummy-data/data'
 import type { NextPage } from "next"
@@ -36,6 +36,9 @@ const WorkOrder: NextPage<Props> = (props) => {
 
     
     const { workOrder, isError, isLoading, setWorkOrder } = useGetWorkOrder(id)
+
+    const attachmentRef = useRef(null)
+    const imageRef = useRef(null)
 
     const [tasks, setTasks] = useState<any[]>([])
     const [images, setImages] = useState<any[]>([])
@@ -181,10 +184,15 @@ const WorkOrder: NextPage<Props> = (props) => {
                           </ul>
                           <div className='mt-4'>
                             <label htmlFor='attachments' className="text-sm font-medium leading-5 text-gray-900">
-                              <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                              <button className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500" 
+                              onClick={() => {
+                                //@ts-ignore
+                                attachmentRef.current.click()
+                              }} 
+                                >
                                 Add attachment
-                              </span>
-                              <input id="attachments" type="file" multiple accept=".pdf,.doc" onChange={onAttachmentChange} className="hidden" />
+                              </button>
+                              <input ref={attachmentRef} id="attachments" type="file" multiple accept=".pdf,.doc" onChange={onAttachmentChange} className="hidden" />
                             </label>
                           </div>
                         </dd>
@@ -272,7 +280,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                       </li>
                     )) : 
                     <label htmlFor='images'>
-                      <span
+                      <div
                         className="relative cursor-pointer block w-full border-2 border-gray-400 border-dashed rounded-lg p-12 text-center hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                       >
                         <svg
@@ -285,9 +293,13 @@ const WorkOrder: NextPage<Props> = (props) => {
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <span className="mt-2 block text-sm font-medium text-gray-600">Add photos</span>
-                        <input type="file" multiple accept='image/*' id="images" className="hidden" onChange={onImageChange} />
-                      </span>
+                        <button className="mt-2 text-sm font-medium text-gray-600"
+                          onClick={() => {
+                            //@ts-ignore
+                            imageRef.current.click()
+                          }}
+                        >Add photos</button>
+                      </div>
                     </label> }
                   </ul>
                 </div>
@@ -296,14 +308,19 @@ const WorkOrder: NextPage<Props> = (props) => {
                 <div className="flex space-x-3">
                   <div className="min-w-0 flex-1">
                     <label htmlFor='images' className="text-sm font-medium leading-5 text-gray-900">
-                      <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
+                      <button className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                        onClick={() => {
+                          //@ts-ignore
+                          imageRef.current.click();
+                        }}
+                      >
                         Add photos
-                      </span>
-                      <input id="images" type="file" multiple accept="image/*" onChange={onImageChange} className="hidden" />
+                      </button>
                     </label>
                   </div>
                 </div>
               </div>}
+              <input ref={imageRef} type="file" multiple accept='image/*' id="images" className="hidden" onChange={onImageChange} />
             </div>
             <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden mt-4">
               <div className="divide-y divide-gray-200">
