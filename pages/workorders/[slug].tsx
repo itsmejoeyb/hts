@@ -65,6 +65,7 @@ const WorkOrder: NextPage<Props> = (props) => {
     //@ts-ignore
     setImages([...images, ...e.target.files])
   }
+
   const onAttachmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //@ts-ignore
     setAttachments([...attachments, ...e.target.files])
@@ -153,11 +154,11 @@ const WorkOrder: NextPage<Props> = (props) => {
                             ))}
                           </ul>
                           <div className='mt-4'>
-                            <label className="text-sm font-medium leading-5 text-gray-900">
+                            <label htmlFor='attachments' className="text-sm font-medium leading-5 text-gray-900">
                               <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                                 Add attachment
                               </span>
-                              <input name="attachments" type="file" multiple accept=".pdf,.doc" onChange={onAttachmentChange} className="hidden" />
+                              <input id="attachments" type="file" multiple accept=".pdf,.doc" onChange={onAttachmentChange} className="hidden" />
                             </label>
                           </div>
                         </dd>
@@ -225,10 +226,9 @@ const WorkOrder: NextPage<Props> = (props) => {
                 </div>
               </div>
             </section>
-
             {/* End Tasks */}
-              
           </div>
+
           {/* Sidebar */}
           <section aria-labelledby="photos-title" className="xl:col-start-3 xl:col-span-1">
             <div className="bg-white shadow sm:rounded-lg sm:overflow-hidden">
@@ -242,10 +242,10 @@ const WorkOrder: NextPage<Props> = (props) => {
                   <ul role="list" className="space-y-8">
                     {imageUrls.length > 0 ? imageUrls.map((imageSrc) => (
                       <li key={imageSrc}>
-                        <img src={imageSrc} className="w-full h" />
+                        <img src={imageSrc} className="w-full" />
                       </li>
                     )) : 
-                    <label htmlFor="images">
+                    <label htmlFor='images'>
                       <span
                         className="relative cursor-pointer block w-full border-2 border-gray-400 border-dashed rounded-lg p-12 text-center hover:border-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                       >
@@ -260,7 +260,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                         <span className="mt-2 block text-sm font-medium text-gray-600">Add photos</span>
-                        <input type="file" multiple accept='image/*' name="images" className="hidden" onChange={onImageChange} />
+                        <input type="file" multiple accept='image/*' id="images" className="hidden" onChange={onImageChange} />
                       </span>
                     </label> }
                   </ul>
@@ -269,11 +269,11 @@ const WorkOrder: NextPage<Props> = (props) => {
               {imageUrls.length > 0 && <div className="bg-gray-50 px-4 py-6 sm:px-6">
                 <div className="flex space-x-3">
                   <div className="min-w-0 flex-1">
-                    <label className="text-sm font-medium leading-5 text-gray-900">
+                    <label htmlFor='images' className="text-sm font-medium leading-5 text-gray-900">
                       <span className="cursor-pointer inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
                         Add photos
                       </span>
-                      <input name="images" type="file" multiple accept="image/*" onChange={onImageChange} className="hidden" />
+                      <input id="images" type="file" multiple accept="image/*" onChange={onImageChange} className="hidden" />
                     </label>
                   </div>
                 </div>
