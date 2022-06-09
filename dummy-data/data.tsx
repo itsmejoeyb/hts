@@ -1292,6 +1292,14 @@ export const formJson = {
             placeholder: 'Details...',
             value: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
             name: 'details',
+        },
+        {
+            label: 'Shipment status',
+            id: 'shipping',
+            placeholder: 'Shipping info',
+            value: 'EXH436H283Y5HW93Y5H',
+            name: 'shipping',
+            type: 'shipping'
         }
     ]
 }

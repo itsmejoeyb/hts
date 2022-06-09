@@ -4,12 +4,13 @@ type Props = {
     placeholder: string,
     value: string,
     name: string,
-    type: string
+    type: string,
+    width?: string
 }
 
-const Input = ({label, id, placeholder, value, type, name}: Props) => {
+const Input = ({label, id, placeholder, value, type, name, width}: Props) => {
     return (
-        <div className="sm:col-span-1">
+        <div className={width == 'full' ? "w-full" : "sm:col-span-1"}>
             <label htmlFor={name} className="block text-sm font-medium text-gray-700">
                 {label}
             </label>

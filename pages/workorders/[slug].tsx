@@ -126,13 +126,13 @@ const WorkOrder: NextPage<Props> = (props) => {
                       </div>
                     </form>
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                      <div className="sm:col-span-1 mt-4">
+                      {/* <div className="sm:col-span-1 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
                           <dd className="mt-1 text-sm w-[fit-content] rounded-full px-2 py-1 text-cyan-600 hover:text-cyan-500">
                             <a href="#">{workOrder?.shipping || 'No shipping info available.'}</a>
                           </dd>
-                      </div>
-                      <div className="sm:col-span-2">
+                      </div> */}
+                      <div className="sm:col-span-2 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Attachments</dt>
                         <dd className="mt-1 text-sm text-gray-900">
                           <ul role="list" className="border border-gray-200 rounded-md divide-y divide-gray-200">
@@ -239,7 +239,7 @@ const WorkOrder: NextPage<Props> = (props) => {
                   </h2>
                 </div>
                 <div className="px-4 py-6 sm:px-6">
-                  <ul role="list" className="space-y-8">
+                  <ul role="list" className="space-y-8 overflow-scroll max-h-96">
                     {imageUrls.length > 0 ? imageUrls.map((imageSrc) => (
                       <li key={imageSrc}>
                         <img src={imageSrc} className="w-full" />
