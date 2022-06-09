@@ -25,7 +25,13 @@ export interface Workorder {
     pinned: false;
     bgColorClass: string;
     status: string;
-    shipping: string;
+    shipping: [
+        {
+            id: number;
+            name: string;
+            tracking: string;
+        }
+    ];
     contact: {
         firstName: string;
         lastName: string;

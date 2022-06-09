@@ -9,7 +9,7 @@ type Props = {
 const TextArea = ({label, id, value, name, rows}: Props) => {
     return (
         <div className="sm:col-span-2">
-            <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+            <label htmlFor={name} className="block text-sm font-medium text-gray-500">
                 {label}
             </label>
             <div className="mt-1">

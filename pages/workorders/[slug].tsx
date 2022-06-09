@@ -9,6 +9,7 @@ import { TrashIcon } from '@heroicons/react/outline'
 import useGetWorkOrder from '@hooks/useGetWorkOrder'
 import { formJson } from '../../dummy-data/data'
 import FormElement from '@components/FormElement'
+import ShipmentModal from '@components/ShipmentModal'
 
 //@ts-ignore
 const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -41,10 +42,13 @@ const WorkOrder: NextPage<Props> = (props) => {
     const [attachments, setAttachments] = useState<any[]>([])
     const [imageUrls, setImageUrls] = useState<string[]>([])
     const [attachmentUrls, setAttachmentUrls] = useState<string[]>([])
+    const [shipping, setShipping] = useState<any[]>([])
+    const [open, setOpen] = useState(false)
 
     useEffect(() => {
       if (workOrder) {
         setTasks(workOrder.tasks)
+        setShipping(workOrder.shipping)
         // setAttachments(workOrder.attachments)
       }
     }, [workOrder])
@@ -74,6 +78,11 @@ const WorkOrder: NextPage<Props> = (props) => {
   const addTask = () => {
     //@ts-ignore
     setTasks([...tasks, {id: tasks.length + 1, title: '', description: '', created: '', completed: false}])
+  }
+
+  const addShipping = () => {
+    //@ts-ignore
+    setShipping([...shipping, {id: shipping.length + 1, name: '', tracking: ''}])
   }
 
   const removeTask = (id: number) => {
@@ -126,13 +135,30 @@ const WorkOrder: NextPage<Props> = (props) => {
                       </div>
                     </form>
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                      {/* <div className="sm:col-span-1 mt-4">
+                      <div className="sm:col-span-1 mt-4">
                         <dt className="text-sm font-medium text-gray-500">Shipment status</dt>
-                          <dd className="mt-1 text-sm w-[fit-content] rounded-full px-2 py-1 text-cyan-600 hover:text-cyan-500">
+                        {shipping.map(shipment => 
+                          <>
+                            <dd className="mt-2 text-sm font-medium leading-5 text-gray-900">{shipment.name}</dd>
+                            <a className='text-cyan-600 hover:text-cyan-500' href="#">{shipment.tracking || 'No shipping info available.'}</a>
+                          </>
+                        )}
+                          {/* <dd className="mt-1 text-sm w-[fit-content] rounded-full px-2 py-1 text-cyan-600 hover:text-cyan-500">
                             <a href="#">{workOrder?.shipping || 'No shipping info available.'}</a>
-                          </dd>
-                      </div> */}
-                      <div className="sm:col-span-2 mt-4">
+                          </dd> */}
+                      </div>
+                      <div className="sm:col-span-2 mt-2">
+                        <button className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500" onClick={() => setOpen(true)}>
+                          Add shipment
+                        </button>
+                        <ShipmentModal 
+                          open={open} 
+                          setOpen={setOpen} 
+                          shipping={shipping} 
+                          setShipping={setShipping} 
+                        />
+                      </div>
+                      <div className="sm:col-span-2">
                         <dt className="text-sm font-medium text-gray-500">Attachments</dt>
                         <dd className="mt-1 text-sm text-gray-900">
                           <ul role="list" className="border border-gray-200 rounded-md divide-y divide-gray-200">

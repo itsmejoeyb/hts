@@ -59,7 +59,18 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -187,7 +198,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'due',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -273,7 +295,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'overdue',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -380,7 +413,18 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -473,7 +517,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -601,7 +656,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'due',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -687,7 +753,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'overdue',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -794,7 +871,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -887,7 +975,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -1015,7 +1114,18 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'due',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -1101,7 +1211,18 @@ export const projects = [
         pinned: false,
         bgColorClass: 'bg-cyan-600',
         status: 'overdue',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -1208,7 +1329,18 @@ export const projects = [
         pinned: true,
         bgColorClass: 'bg-cyan-600',
         status: 'ontime',
-        shipping: 'EXH436H283Y5HW93Y5H',
+        shipping: [
+            {
+                id: 1,
+                name: 'Item One',
+                tracking: '123456789'
+            },
+            {
+                id: 2,
+                name: 'Item Two',
+                tracking: '123456789'
+            },
+        ],
         contact: {
             firstName: 'John',
             lastName: 'Smith',
@@ -1293,13 +1425,13 @@ export const formJson = {
             value: 'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.',
             name: 'details',
         },
-        {
-            label: 'Shipment status',
-            id: 'shipping',
-            placeholder: 'Shipping info',
-            value: 'EXH436H283Y5HW93Y5H',
-            name: 'shipping',
-            type: 'shipping'
-        }
+        // {
+        //     label: 'Shipment status',
+        //     id: 'shipping',
+        //     placeholder: 'Shipping info',
+        //     value: 'EXH436H283Y5HW93Y5H',
+        //     name: 'shipping',
+        //     type: 'shipping'
+        // }
     ]
 }

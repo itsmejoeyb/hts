@@ -11,7 +11,7 @@ type Props = {
 const Input = ({label, id, placeholder, value, type, name, width}: Props) => {
     return (
         <div className={width == 'full' ? "w-full" : "sm:col-span-1"}>
-            <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+            <label htmlFor={name} className="block text-sm font-medium text-gray-500">
                 {label}
             </label>
             <div className="mt-1">
