@@ -20,7 +20,11 @@ type Data =
         pinned: boolean,
         bgColorClass: string,
         status: string,
-        shipping: string,
+        shipping: {
+            id: number,
+            name: string,
+            tracking: string,
+        }[],
         contact: {
             firstName: string,
             lastName: string,
